@@ -16,7 +16,7 @@
       <span>
         2. 使用http与服务端通信
       </span>
-    </div>    
+    </div>
     <div class="one-block-2">
       <p>
         <a-button @click="backendRequest()"> 发送请求 </a-button>
@@ -74,7 +74,7 @@ export default {
       console.log('url:', url);
       return axios({
         url: url,
-        method: 'post', 
+        method: 'post',
         data: parameter,
         timeout: 60000,
       })
@@ -88,7 +88,7 @@ export default {
       const cfg = {
         baseURL: import.meta.env.VITE_GO_URL,
         method: 'get',
-        url: '/hello',
+        url: '/index',
         timeout: 60000,
       }
       axios(cfg).then(res => {
@@ -96,7 +96,7 @@ export default {
         const data = res.data || null;
         this.$message.info(`go服务返回: ${data}`, );
       })
-    }    
+    }
   }
 };
 </script>

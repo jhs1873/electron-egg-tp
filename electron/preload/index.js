@@ -16,4 +16,5 @@ module.exports = async () => {
   Addon.get('autoUpdater').create();
 
   //Services.get('cross').createGoServer();
+  Services.get('cross').createThinkphpServer();
 }

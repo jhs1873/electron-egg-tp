@@ -98,6 +98,30 @@ class CrossService extends Service {
 
     return;
   }
+  /**
+   * create thinkphp service
+   * 启动ThinkPHP服务进程
+   */
+  async createThinkphpServer() {
+    const serviceName = "tp";
+    const opt = {
+      name: 'tpapi',
+      // 修改：直接使用 PHP 可执行文件作为 cmd
+      cmd: path.join(Ps.getExtraResourcesDir(), 'php-7.3/php'),
+      // 修改：设置正确的工作目录
+      directory: path.join(Ps.getExtraResourcesDir(), 'api'),
+      // 修改：调整参数格式
+      args: ['think', 'run', '--port=8000'],
+      appExit: true,
+    }
+
+    const entity = await Cross.run(serviceName, opt);
+    Log.info('server name:', entity.name);
+    Log.info('server config:', entity.config);
+    Log.info('server url:', Cross.getUrl(entity.name));
+
+    return;
+  }
 }
 
 CrossService.toString = () => '[class CrossService]';
